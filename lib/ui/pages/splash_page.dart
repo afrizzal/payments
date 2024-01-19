@@ -39,7 +39,8 @@ class _SplashPageState extends State<SplashPage> {
             image: AssetImage(
               'assets/img_logo_dark.png',
             ),
-          )),
+          ),
+          ),
         ),
       ),
     );

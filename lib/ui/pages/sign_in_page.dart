@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payments/shared/theme.dart';
+import 'package:flutter_payments/ui/widgets/buttons.dart';
+import 'package:flutter_payments/ui/widgets/forms.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key:key);
@@ -47,55 +49,64 @@ class SignInPage extends StatelessWidget {
             child: Column(
               children: [
                 //EMAIL INPUT
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Email Address',
-                      style: blackTextStyle.copyWith(
-                        fontWeight: medium,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          ),
-                          contentPadding: const EdgeInsets.all(12),
-                      ),
-                    )
-                  ],
+                const CustomFormField(title: 
+                'Email Address',
                 ),
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       'Email Address',
+                //       style: blackTextStyle.copyWith(
+                //         fontWeight: medium,
+                //       ),
+                //     ),
+                //     const SizedBox(
+                //       height: 8,
+                //     ),
+                //     TextFormField(
+                //       decoration: InputDecoration(
+                //         border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(14),
+                //           ),
+                //           contentPadding: const EdgeInsets.all(12),
+                //       ),
+                //     )
+                //   ],
+                // ),
                 const SizedBox(
                   height: 16,
                 ),
+                
                 //PWD INPUT
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Password',
-                      style: blackTextStyle.copyWith(
-                        fontWeight: medium,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    TextFormField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(14),
-                          ),
-                          contentPadding: const EdgeInsets.all(12),
-                      ),
-                    )
-                  ],
+
+                const CustomFormField(title: 
+                'Password',
+                obscureText: true,
                 ),
+                // Column(
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Text(
+                //       'Password',
+                //       style: blackTextStyle.copyWith(
+                //         fontWeight: medium,
+                //       ),
+                //     ),
+                //     const SizedBox(
+                //       height: 8,
+                //     ),
+                //     TextFormField(
+                //       obscureText: true,
+                //       decoration: InputDecoration(
+                //         border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(14),
+                //           ),
+                //           contentPadding: const EdgeInsets.all(12),
+                //       ),
+                //     )
+                //   ],
+                // ),
                 const SizedBox(
                   height: 8,
                 ),
@@ -109,52 +120,61 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                SizedBox(
-                        width: double.infinity,
-                        height: 50,
-                        child: TextButton(
-                          onPressed: () {
-                            //BREAK
-                          },
-                          style: TextButton.styleFrom(
-                            backgroundColor: purpleColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(56)
-                            ),
-                          ),
-                          child: Text(
-                            'SIgn In',
-                            style: whiteTextStyle.copyWith(
-                              fontSize: 16,
-                              fontWeight: semiBold,
-                          ),
-                        ),
-                      ),
-                    ),
+                CustomFilledButton(
+                  title: 'Sign In', 
+                  onPressed: (){},
+                  ),
+                //Without Widget
+                // SizedBox(
+                //         width: double.infinity,
+                //         height: 50,
+                //         child: TextButton(
+                //           onPressed: () {
+                //             //BREAK
+                //           },
+                //           style: TextButton.styleFrom(
+                //             backgroundColor: purpleColor,
+                //             shape: RoundedRectangleBorder(
+                //               borderRadius: BorderRadius.circular(56)
+                //             ),
+                //           ),
+                //           child: Text(
+                //             'SIgn In',
+                //             style: whiteTextStyle.copyWith(
+                //               fontSize: 16,
+                //               fontWeight: semiBold,
+                //           ),
+                //         ),
+                //       ),
+                //     ),
               ],
             ),
           ),
           const SizedBox(
             height: 5,
           ),
-                        SizedBox(
-                        width: double.infinity,
-                        height: 24,
-                        child: TextButton(
-                          onPressed: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage(),),);
-                          },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            ),
-                          child: Text(
-                            'Create New Account',
-                            style: greyTextStyle.copyWith(
-                              fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
+          CustomTextButton(
+            title: 'Create New Account',
+            onPressed: (){},
+          ),
+                    //     SizedBox(
+                    //     width: double.infinity,
+                    //     height: 24,
+                    //     child: TextButton(
+                    //       onPressed: () {
+                    //         // Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage(),),);
+                    //       },
+                    //       style: TextButton.styleFrom(
+                    //         padding: EdgeInsets.zero,
+                    //         ),
+                    //       child: Text(
+                    //         'Create New Account',
+                    //         style: greyTextStyle.copyWith(
+                    //           fontSize: 16,
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
       ],
     ),
     );

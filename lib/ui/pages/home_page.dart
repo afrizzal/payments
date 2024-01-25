@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_payments/shared/theme.dart";
+import "package:flutter_payments/ui/widgets/home_latest_transaction_item.dart";
+import "package:flutter_payments/ui/widgets/home_service_item.dart";
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -79,6 +81,9 @@ class HomePage extends StatelessWidget {
         children: [
           buildProfile(),
           buildWalletCard(),
+          buildLevel(),
+          buildServices(),
+          buildLatestTransaction(),
           // const SizedBox(
           //   height: 40,
           // ),
@@ -204,4 +209,157 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+  Widget buildLevel () {
+      return Container(
+        margin: const EdgeInsets.all(22),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: whiteColor,
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Level 1',
+                  style: blackTextStyle.copyWith(
+                    fontWeight: medium,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  '55%',
+                  style: greenTextStyle.copyWith(
+                    fontWeight: semiBold,
+                  ),
+                ),
+                Text(
+                  'of Rp. 20,000',
+                  style: blackTextStyle.copyWith(
+                    fontWeight: semiBold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(55),
+              child: LinearProgressIndicator(
+                value: 0.55,
+                valueColor: AlwaysStoppedAnimation(greenColor),
+                minHeight: 5,
+                backgroundColor: lightBackgroundColor,
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+  Widget buildServices(){
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 30,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Do Something',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_topup.png', 
+                  title: 'Top Up',
+                  onTap: (){},
+                  ),
+                  HomeServiceItem(
+                  iconUrl: 'assets/ic_send.png', 
+                  title: 'Send',
+                  onTap: (){},
+                  ),
+                  HomeServiceItem(
+                  iconUrl: 'assets/ic_wd.png', 
+                  title: 'Withdraw',
+                  onTap: (){},
+                  ),
+                  HomeServiceItem(
+                  iconUrl: 'assets/ic_more.png', 
+                  title: 'More',
+                  onTap: (){},
+                  ),
+              ],
+            )
+          ],
+        ),
+      );
+    }
+    Widget buildLatestTransaction() {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 30,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Latest Transaction',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(22),
+              margin: const EdgeInsets.only(
+                top: 14,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: whiteColor,
+              ),
+              child: Column(
+                children: [
+                  HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat1.png',
+                   title: 'Top Up',
+                   time: 'yesterday',
+                   value: '+ 666.000',
+                   ),
+                  HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat2.png',
+                   title: 'Cashback', 
+                   time: 'Aug 17', 
+                   value: '+ 1.500',
+                   ),
+                  HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat3.png',
+                   title: 'Withdraw', 
+                   time: 'May 21', 
+                   value: '- 600.000',
+                   ),
+                  HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat4.png',
+                   title: 'Transfer', 
+                   time: 'Apr 1', 
+                   value: '+ 6.000',
+                   ),
+                  HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat5.png',
+                   title: 'Voucher', 
+                   time: 'Feb 14', 
+                   value: '+ 50.000',
+                   ),
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    }
 }

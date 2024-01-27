@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_payments/shared/theme.dart";
 import "package:flutter_payments/ui/widgets/home_latest_transaction_item.dart";
 import "package:flutter_payments/ui/widgets/home_service_item.dart";
+import "package:flutter_payments/ui/widgets/home_tips_item.dart";
+import "package:flutter_payments/ui/widgets/home_user_item.dart";
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -84,6 +86,8 @@ class HomePage extends StatelessWidget {
           buildLevel(),
           buildServices(),
           buildLatestTransaction(),
+          buildSendAgain(),
+          buildFrindlyTips(),
           // const SizedBox(
           //   height: 40,
           // ),
@@ -91,7 +95,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  Widget buildProfile() {
+    Widget buildProfile() {
     return Container(
       margin: const EdgeInsets.only(
         top: 40,
@@ -151,8 +155,7 @@ class HomePage extends StatelessWidget {
     ),
   );
 }
-
-  Widget buildWalletCard() {
+    Widget buildWalletCard() {
     return Container(
       width: double.infinity,
       height: 220,
@@ -209,7 +212,7 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  Widget buildLevel () {
+    Widget buildLevel () {
       return Container(
         margin: const EdgeInsets.all(22),
         decoration: BoxDecoration(
@@ -234,7 +237,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'of Rp. 20,000',
+                  ' of Rp. 20,000',
                   style: blackTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),
@@ -257,7 +260,7 @@ class HomePage extends StatelessWidget {
         ),
       );
     }
-  Widget buildServices(){
+    Widget buildServices(){
       return Container(
         margin: const EdgeInsets.only(
           top: 30,
@@ -328,7 +331,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: whiteColor,
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   HomeLatestTransactionItem(iconUrl: 'assets/ic_transaction_cat1.png',
                    title: 'Top Up',
@@ -358,6 +361,97 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             )
+          ],
+        ),
+      );
+    }
+    Widget buildSendAgain() {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 30,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Send Again',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            // ignore: prefer_const_constructors
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: const Row(
+                children: [
+                  HomeUserItem(
+                    imageUrl: 'assets/img_friend1.png', 
+                    username: 'citra',
+                    ),
+                  HomeUserItem(
+                    imageUrl: 'assets/img_friend2.png', 
+                    username: 'shita',
+                    ),
+                  HomeUserItem(
+                    imageUrl: 'assets/img_friend3.png', 
+                    username: 'Didit',
+                    ),
+                  HomeUserItem(
+                    imageUrl: 'assets/img_friend4.png', 
+                    username: 'Galih',
+                    ),
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    }
+    Widget buildFrindlyTips() {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 30,
+          bottom: 50,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Friendly Tips',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            const SizedBox(
+              height: 14,
+            ),
+            const Wrap(
+              spacing: 2,
+              runSpacing: 5,
+              children: [
+            HomeTipsItem(
+              imageUrl: 'assets/img_tips1.png', 
+              title: 'Neque porro quisquam est qui', 
+              url: 'https://avenirstudio.net/'),
+            HomeTipsItem(
+              imageUrl: 'assets/img_tips2.png', 
+              title: 'dolorem ipsum quia dolor sit', 
+              url: 'https://avenirstudio.net/'),
+            HomeTipsItem(
+              imageUrl: 'assets/img_tips3.png', 
+              title: 'Lorem ipsum dolor sit amet', 
+              url: 'https://avenirstudio.net/'),
+            HomeTipsItem(
+              imageUrl: 'assets/img_tips4.png', 
+              title: 'Sed ut perspiciatis unde ', 
+              url: 'https://avenirstudio.net/'),
+              ],
+            ),
           ],
         ),
       );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payments/ui/pages/home_page.dart';
 import 'package:flutter_payments/ui/pages/onboarding_page.dart';
+import 'package:flutter_payments/ui/pages/profile_page.dart';
 import 'package:flutter_payments/ui/pages/sign_in_page.dart';
 import 'package:flutter_payments/ui/pages/sign_up_page.dart';
 import 'package:flutter_payments/ui/pages/sign_up_set_identity_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/sign-up-set-identity': (context) => const SignUpSetIdentityPage(),
         '/sign-up-success':(context) => const SignUpSuccessPage(),
         '/home': (context) => const HomePage(),
+        '/profile': (context) => const ProfilePage(),
       },
     );
   }

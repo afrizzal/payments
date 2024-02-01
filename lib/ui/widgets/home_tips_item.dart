@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payments/shared/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class HomeTipsItem extends StatelessWidget {
   final String imageUrl;
@@ -17,16 +16,9 @@ class HomeTipsItem extends StatelessWidget {
     return GestureDetector(
      onTap: () async {
   if (await canLaunch(url)) {
-    try {
-      await launch(url);
-    } catch (e) {
-      print('Error launching URL: $e');
-    }
-  } else {
-    print('Could not launch URL: $url');
+    launch(url);
   }
 },
-
       child: Container(
         width: 155,
         height: 176,

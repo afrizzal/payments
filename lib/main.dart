@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_payments/shared/theme.dart';
 import 'package:flutter_payments/ui/pages/home_page.dart';
 import 'package:flutter_payments/ui/pages/onboarding_page.dart';
 import 'package:flutter_payments/ui/pages/profile_page.dart';
@@ -18,6 +19,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: lightBackgroundColor,
+        appBarTheme: AppBarTheme(
+        backgroundColor: lightBackgroundColor,
+        elevation: 0,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: blackColor,
+        ),
+        titleTextStyle: blackTextStyle.copyWith(
+          fontSize: 20,
+          fontWeight: semiBold,
+        ),
+      ),
+    ),
       routes: {
         '/': (context) => const SplashPage(),
         '/onboarding': (context) => const OnboardingPage(),

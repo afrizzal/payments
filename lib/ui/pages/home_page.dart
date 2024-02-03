@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image:AssetImage(
-                    'assets/img_profile.png',
+                    'assets/img_profile_reza.jpg',
                   ),
                 ),
               ),

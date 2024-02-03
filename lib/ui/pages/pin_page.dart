@@ -18,6 +18,9 @@ class _PinPageState extends State<PinPage> {
         pinController.text = pinController.text + number;
       });
     }
+    if (pinController.text == '123123') {
+      Navigator.pop(context, true);
+    }
   }
 
   deletePin(){
@@ -70,11 +73,6 @@ class _PinPageState extends State<PinPage> {
                         color: greyColor,
                       ),
                     ),
-                    // focusedBorder: UnderlineInputBorder(
-                    //   borderSide: BorderSide(
-                    //     color: greyColor,
-                    //   )
-                    // )
                   ),
                 ),
               ),

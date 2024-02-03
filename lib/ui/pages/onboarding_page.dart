@@ -102,7 +102,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         },
                         ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
 
                     CustomTextButton

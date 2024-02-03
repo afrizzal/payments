@@ -78,7 +78,9 @@ class ProfilePage extends StatelessWidget {
             ProfileMenuItem(
               iconUrl: 'assets/ic_edit_profile.png', 
               title: 'Edit Profile',
-              onTap: (){},
+              onTap: (){
+                Navigator.pushNamed(context, '/pin');
+              },
               ),
             ProfileMenuItem(
               iconUrl: 'assets/ic_pin.png', 
@@ -109,14 +111,14 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
       const SizedBox(
-        height: 87,
+        height: 1,
       ),
       CustomTextButton(
-        title: 'Report',
+        title: 'Need help?',
         onPressed: (){},
       ),
       const SizedBox(
-        height: 50,
+        height: 10,
       ),
     ],
   ),

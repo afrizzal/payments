@@ -13,6 +13,8 @@ import 'package:flutter_payments/ui/pages/sign_up_set_identity_page.dart';
 import 'package:flutter_payments/ui/pages/sign_up_set_profile_page.dart';
 import 'package:flutter_payments/ui/pages/sign_up_success_page.dart';
 import 'package:flutter_payments/ui/pages/splash_page.dart';
+import 'package:flutter_payments/ui/pages/topup_amount_page.dart';
+import 'package:flutter_payments/ui/pages/topup_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -52,6 +54,8 @@ class MyApp extends StatelessWidget {
         '/profile-edit':(context) => const ProfileEditPage(),
         '/profile-edit-pin':(context) => const ProfileEditPinPage(),
         '/profile-edit-success':(context) => const ProfileEditSuccessPage(),
+        '/topup':(context) => const TopUpPage(),
+        '/topup-amount':(context) => const TopupAmountPage(),
       },
     );
   }

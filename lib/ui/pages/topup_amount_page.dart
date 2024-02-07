@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payments/shared/theme.dart';
 import 'package:flutter_payments/ui/widgets/buttons.dart';
+import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class TopupAmountPage extends StatefulWidget {
   const TopupAmountPage({super.key});
@@ -10,24 +12,47 @@ class TopupAmountPage extends StatefulWidget {
 }
 
 class _TopupAmountPageState extends State<TopupAmountPage> {
-  final TextEditingController pinController = TextEditingController(text: '');
+  final TextEditingController amountController = 
+    TextEditingController(text: '0');
 
-  addPin(String number) {
-    if (pinController.text.length <6) {
-      setState(() {
-        pinController.text = pinController.text + number;
-      });
-    }
-    if (pinController.text == '123123') {
-      Navigator.pop(context, true);
-    }
+  @override
+  void initState(){
+    super.initState();
+
+    amountController.addListener(() {
+      final text = amountController.text;
+      
+      amountController.value = amountController.value.copyWith(
+        text: NumberFormat.currency(
+          locale: 'id',
+          decimalDigits: 0,
+          symbol: '',
+        ).format(
+          int.parse(
+            text == '' ? '0' : text.replaceAll('.', ''),
+          ),
+        ),
+      );
+    });
   }
 
-  deletePin(){
-    if (pinController.text.isNotEmpty) {
+  addAmount(String number) {
+    if(amountController.text == '0'){
+      amountController.text = '';
+    }
       setState(() {
-        pinController.text =
-          pinController.text.substring(0, pinController.text.length-1);
+        amountController.text = amountController.text + number;
+      });
+    }
+
+  deleteAmount(){
+    if (amountController.text.isNotEmpty) {
+      setState(() {
+        amountController.text =
+          amountController.text.substring(0, amountController.text.length-1);
+          if(amountController.text == '') {
+            amountController.text = '0';
+          }
       });
     }
   }
@@ -56,27 +81,29 @@ class _TopupAmountPageState extends State<TopupAmountPage> {
           const SizedBox(
             height: 67,
           ),
-          SizedBox(
-            width: 200,
-            child: TextFormField(
-              controller: pinController,
-              cursorColor: greyColor,
-              enabled: false,
-              style: whiteTextStyle.copyWith(
-                fontSize: 36,
-                fontWeight: medium,
-              ),
-              decoration: InputDecoration(
-                prefixIcon: Text(
-                  'Rp.',
+          Align(
+            child: SizedBox(
+              width: 200,
+              child: TextFormField(
+                controller: amountController,
+                cursorColor: greyColor,
+                enabled: false,
                 style: whiteTextStyle.copyWith(
-                fontSize: 36,
-                fontWeight: medium,
+                  fontSize: 36,
+                  fontWeight: medium,
                 ),
-              ),
-                disabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: greyColor,
+                decoration: InputDecoration(
+                  prefixIcon: Text(
+                    'Rp.',
+                  style: whiteTextStyle.copyWith(
+                  fontSize: 36,
+                  fontWeight: medium,
+                  ),
+                ),
+                  disabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: greyColor,
+                    ),
                   ),
                 ),
               ),
@@ -92,55 +119,55 @@ class _TopupAmountPageState extends State<TopupAmountPage> {
               CustomInputButton(
                 title: '1',
                 onTap: (){
-                  addPin('1');
+                  addAmount('1');
                   },
                 ),
               CustomInputButton(
                 title: '2',
                 onTap: (){
-                  addPin('2');
+                  addAmount('2');
                   },
                 ),
               CustomInputButton(
                 title: '3',
                 onTap: (){
-                  addPin('3');
+                  addAmount('3');
                   },
                 ),
               CustomInputButton(
                 title: '4',
                 onTap: (){
-                  addPin('4');
+                  addAmount('4');
                   },
                 ),
               CustomInputButton(
                 title: '5',
                 onTap: (){
-                  addPin('5');
+                  addAmount('5');
                   },
                 ),
               CustomInputButton(
                 title: '6',
                 onTap: (){
-                  addPin('6');
+                  addAmount('6');
                   },
                 ),
               CustomInputButton(
                 title: '7',
                 onTap: (){
-                  addPin('7');
+                  addAmount('7');
                   },
                 ),
               CustomInputButton(
                 title: '8',
                 onTap: (){
-                  addPin('8');
+                  addAmount('8');
                   },
                 ),
               CustomInputButton(
                 title: '9',
                 onTap: (){
-                  addPin('9');
+                  addAmount('9');
                   },
                 ),
               const SizedBox(
@@ -150,12 +177,12 @@ class _TopupAmountPageState extends State<TopupAmountPage> {
               CustomInputButton(
                 title: '0',
                 onTap: (){
-                  addPin('0');
+                  addAmount('0');
                   },
                 ),
             GestureDetector(
               onTap: (){
-                deletePin();
+                deleteAmount();
               },
               child: Container(
                 width: 60,
@@ -175,6 +202,30 @@ class _TopupAmountPageState extends State<TopupAmountPage> {
             ),
           ],
         ),
+        const SizedBox(
+          height: 50,
+        ),
+        CustomFilledButton(
+          title: 'Checkout Now', 
+          onPressed: () async{
+            if(await Navigator.pushNamed(context, '/pin') == true){
+              Uri uri = Uri.parse('https://demo.midtrans.com'); // Convert string to Uri
+              await launchUrl(uri);
+
+              Navigator.pushNamedAndRemoveUntil(context, '/topup-success', (route) => false);
+            }
+          },
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        CustomTextButton(
+          title: 'Term & Conditions', 
+          onPressed: (){}
+          ),
+          const SizedBox(
+            height: 40,
+          ),
       ],
             ),
   );

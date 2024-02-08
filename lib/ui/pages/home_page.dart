@@ -307,7 +307,10 @@ class HomePage extends StatelessWidget {
                   HomeServiceItem(
                   iconUrl: 'assets/ic_more.png', 
                   title: 'More',
-                  onTap: (){},
+                  onTap: (){
+                    showDialog(context: context, builder: (context) => const MoreDialog(),
+                    );
+                  },
                   ),
               ],
             )
@@ -464,4 +467,77 @@ class HomePage extends StatelessWidget {
         ),
       );
     }
+}
+
+class MoreDialog extends StatelessWidget {
+  const MoreDialog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.zero,
+      alignment: Alignment.bottomCenter,
+      content: Container(
+        height: 325,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.all(30),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: lightBackgroundColor,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Select payments',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            const SizedBox(
+              height: 13,
+            ),
+            Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              children: [
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_data.png', 
+                  title: 'Data',
+                  onTap: (){},
+                ),
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_water.png', 
+                  title: 'Bills',
+                  onTap: (){},
+                ),
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_stream.png', 
+                  title: 'Vidio',
+                  onTap: (){},
+                ),
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_movie.png', 
+                  title: 'Movie',
+                  onTap: (){},
+                ),
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_food.png', 
+                  title: 'Coffee',
+                  onTap: (){},
+                ),
+                HomeServiceItem(
+                  iconUrl: 'assets/ic_product_travel.png', 
+                  title: 'Travel',
+                  onTap: (){},
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }

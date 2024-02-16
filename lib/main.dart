@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_payments/shared/theme.dart';
 import 'package:flutter_payments/ui/pages/data_package_page.dart';
+import 'package:flutter_payments/ui/pages/data_package_success.dart';
 import 'package:flutter_payments/ui/pages/data_provider_page.dart';
 import 'package:flutter_payments/ui/pages/home_page.dart';
 import 'package:flutter_payments/ui/pages/onboarding_page.dart';
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
         '/transfer-success':(context) => const TransferSuccessPage(),
         '/data-provider':(context) => const DataProviderPage(),
         '/data-package':(context) => const DataPackagePage(),
+        '/data-success':(context) => const DataSuccessPage(),
       },
     );
   }

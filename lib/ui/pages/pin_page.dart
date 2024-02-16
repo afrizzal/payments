@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_payments/shared/shared_methods.dart';
 import 'package:flutter_payments/shared/theme.dart';
 import 'package:flutter_payments/ui/widgets/buttons.dart';
 
@@ -18,8 +19,14 @@ class _PinPageState extends State<PinPage> {
         pinController.text = pinController.text + number;
       });
     }
-    if (pinController.text == '123123') {
-      Navigator.pop(context, true);
+
+    if (pinController.text.length == 6) {
+      if (pinController.text == '123123') {
+        Navigator.pop(context, true);
+        } else {
+          showCustomSnackbar(
+            context, 'Wrong PIN. Please enter the correct PIN');
+        }
     }
   }
 
